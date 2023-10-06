@@ -33,7 +33,7 @@ sudo kubeadm init
 
 #Set Up kubectl for the Current User:
 
-$After initializing the cluster, set up kubectl for your user:
+#After initializing the cluster, set up kubectl for your user:
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -43,6 +43,10 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 #Kubernetes requires a Pod network for communication between Pods and nodes. You can choose from various CNI plugins. One common choice is Calico:
 
 kubectl apply -f https://docs.projectcalico.org/v3.18/manifests/calico.yaml
+#or
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml 
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.49.0/deploy/static/provider/baremetal/deploy.yaml
+
 #Join Worker Nodes (Optional):
 
 #If you have worker nodes that you want to add to the cluster, use the token generated during the cluster initialization. Run the command on the worker nodes:
