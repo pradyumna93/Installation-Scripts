@@ -14,8 +14,9 @@ sudo apt install docker.io -y
 ```
 #After installation, start and enable the Docker service:
 ```bash
-sudo systemctl start docker
 sudo systemctl enable docker
+sudo systemctl start docker
+
 ```
 Install kubeadm, kubelet, and kubectl:
 
@@ -63,6 +64,10 @@ sudo kubeadm join <master-node-ip>:<master-node-port> --token <token> --discover
 ```
 #Replace <master-node-ip>, <master-node-port>, <token>, and <ca-cert-hash> with the values from the kubeadm init output.
 
+## Run Below on Master Node to get join token 
+```bash
+sudo kubeadm token create --print-join-command 
+```
 #Verify Cluster Status:
 
 #On the master node, run the following command to check the status of the cluster:
